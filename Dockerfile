@@ -21,3 +21,4 @@ RUN mkdir /build \
  && composer --no-interaction --no-ansi --version \
  && rm /tmp/composer-setup.php \
  && composer global require "fxp/composer-asset-plugin:^1.2.0"
+ && composer global require hirak/prestissimo
