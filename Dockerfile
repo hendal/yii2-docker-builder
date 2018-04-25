@@ -4,6 +4,7 @@ RUN apt-get update -yqq && apt-get install -yqq git libmcrypt-dev libpq-dev libc
                 libjpeg-dev libpng-dev libxpm-dev zlib1g-dev libfreetype6-dev libxml2-dev libexpat1-dev zip \
                 libbz2-dev libgmp3-dev libldap2-dev unixodbc-dev libsqlite3-dev libaspell-dev libsnmp-dev libpcre3-dev libtidy-dev
 RUN docker-php-ext-install mbstring mcrypt pdo_pgsql curl json intl gd xml zip bz2 opcache
+ENV COMPOSER_CACHE_DIR=/cache/composer
 RUN mkdir /build \
  && mkdir /composer \
  && chmod -R 777 /composer \
@@ -20,5 +21,4 @@ RUN mkdir /build \
  && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/bin --filename=composer \
  && composer --no-interaction --no-ansi --version \
  && rm /tmp/composer-setup.php \
- && composer global require "fxp/composer-asset-plugin:^1.2.0" \
- && composer global require hirak/prestissimo
+ && composer global require "fxp/composer-asset-plugin:^1.2.0"
